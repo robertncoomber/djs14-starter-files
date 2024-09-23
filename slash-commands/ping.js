@@ -1,6 +1,7 @@
 module.exports = {
   run: ({ interaction }) => {
     interaction.reply('Pong!');
+    interaction.
   },
 
   data: {

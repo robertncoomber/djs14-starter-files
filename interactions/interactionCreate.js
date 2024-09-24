@@ -1,7 +1,13 @@
+
 // events/interactionCreate.js
 module.exports = (client) => {
+    console.log("hey")
     client.on('interactionCreate', async (interaction) => {
+        console.log('An interaction was received'); // Add this line
         if (!interaction.isContextMenuCommand()) return;
+        console.log('It is a context menu command'); // Add this line
+        if (interaction.commandName === 'Create Linear Issue') {
+            console.log('Create Linear Issue command triggered');
 
         if (interaction.commandName === 'Create Linear Issue') {
             const message = interaction.targetMessage;
@@ -13,6 +19,7 @@ module.exports = (client) => {
             const urlDescription = encodeURIComponent(description);
 
             const linearUrl = `https://linear.new?description=${urlDescription}`;
+            console.log(linearUrl);
 
             // Create a button that links to the Linear URL
             const {
@@ -29,9 +36,9 @@ module.exports = (client) => {
             const row = new ActionRowBuilder().addComponents(button);
 
             await interaction.reply({
-                content: 'Click the button below to create a Linear issue:',
-                components: [row],
-                ephemeral: true,
+               content: 'Click the button below to create a Linear issue:',
+               components: [row],
+               ephemeral: true,
             });
         }
     });

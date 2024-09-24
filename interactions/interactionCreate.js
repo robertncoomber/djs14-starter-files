@@ -1,7 +1,6 @@
 
 // events/interactionCreate.js
 module.exports = (client) => {
-    console.log("hey")
     client.on('interactionCreate', async (interaction) => {
         console.log('An interaction was received'); // Add this line
         if (!interaction.isContextMenuCommand()) return;
@@ -15,11 +14,13 @@ module.exports = (client) => {
             const username = message.author.username;
 
             // Build the Linear URL
-            const description = `Reported by ${username}:\n\n${content}`;
+            const description = `Reported by ${"shitbreath"}:\n\n${"fucker"}`;
             const urlDescription = encodeURIComponent(description);
 
-            const linearUrl = `https://linear.new?description=${urlDescription}`;
-            console.log(linearUrl);
+            const labels = 'bug'; // You can add more labels separated by commas
+            const estimate = '3'; // Replace with desired estimate value
+
+            const linearUrl = `https://linear.new?description=${urlDescription}&labels=${encodeURIComponent(labels)}&estimate=${encodeURIComponent(estimate)}`;
 
             // Create a button that links to the Linear URL
             const {

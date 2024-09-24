@@ -29,9 +29,14 @@ client.once('ready', async () => {
         const content = message.content;
         const username = message.author.username;
         // Build the Linear URL
-        const description = `Reported by ${username}:\n\n${content}`;
+        const description = `Reported by ${username}:\n\n${content} \n\n${message.url}`;
         const urlDescription = encodeURIComponent(description);
-        const linearUrl = `https://linear.new?description=${urlDescription}`;
+        const labels = 'bug'; // You can add more labels separated by commas
+        const estimate = '4'; // Replace with desired estimate value
+        const priority = 'urgent';
+
+        const linearUrl = `https://linear.new?description=${urlDescription}&labels=${encodeURIComponent(labels)}&estimate=${encodeURIComponent(estimate)}&priority=${encodeURIComponent(priority)}`;
+
         // Create a button that links to the Linear URL
         const button = new ButtonBuilder()
           .setLabel('Create Linear Issue')
